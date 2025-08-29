@@ -11,10 +11,9 @@ Este documento sirve como una guía centralizada de la mayoría de temas relacio
 5. [Sistemas de Identificación y Evaluación](#5-sistemas-de-identificación-y-evaluación)
 6. [Gestión de Dependencias](#6-gestión-de-dependencias)
 7. [Buenas Prácticas de Desarrollo Seguro](#7-buenas-prácticas-de-desarrollo-seguro)
-8. [Herramientas y Automatización](#8-herramientas-y-automatización)
-9. [Gestión de Secretos e Información Sensible](#9-gestión-de-secretos-e-información-sensible)
-10. [Compliance y Estándares](#10-compliance-y-estándares)
-11. [Fuentes y Recursos Útiles](#11-fuentes-y-recursos-útiles)
+8. [Gestión de Secretos e Información Sensible](#8-gestión-de-secretos-e-información-sensible)
+9. [Compliance y Estándares](#9-compliance-y-estándares)
+10. [Fuentes y Recursos Útiles](#10-fuentes-y-recursos-útiles)
 
 ---
 
@@ -692,40 +691,11 @@ logger.warn('Failed login attempt', {
 
 ---
 
-## 8. Herramientas y Automatización
-
-### SCA (Software Composition Analysis)
-
-- **Dependabot (GitHub):** genera PRs automáticas para actualizar dependencias y alertas GHSA.
-- **Snyk:** escaneo de deps, PRs de corrección, monitorización.
-- **OSS Index / Sonatype / WhiteSource:** alternativas para escaneo de dependencias.
-- **Trivy / Grype / Syft:** escaneo de imágenes, archivos, y generación de SBOM.
-
-### SAST / DAST / RASP
-
-- **SAST (Static Application Security Testing):** analiza código fuente (semgrep, CodeQL, sonarqube plugins de seguridad, ESLint security plugins).
-- **DAST (Dynamic Application Security Testing):** analizan aplicación corriendo (OWASP ZAP, Burp Suite).
-- **RASP (Runtime Application Self-Protection):** instrumentación que detecta y mitiga ataques en runtime.
-
-### Integración práctica
-
-- **CI:** ejecutar SCA y SAST en la build; rechazar build si policy bloqueante.
-- **Registry / Image scanning:** escanear imágenes en pipeline y antes de push al registry.
-- **Scheduled scans:** ejecución nocturna/semanal con reportes y creación de issues automáticos.
-
-**Comandos útiles:**
-
-- `npm audit` — reporta vulnerabilidades en deps.
-- `npm audit fix` — intenta aplicar fixes automáticos (riesgo: `--force` puede introducir breaking changes).
-- `trivy image <image>` — escanea imagen docker.
-
----
-
-## 9. Gestión de Secretos e Información Sensible
+## 8. Gestión de Secretos e Información Sensible
 
 La gestión de secretos va más allá de simples claves API. Incluye la protección integral de cualquier información que, de ser comprometida, podría causar daño a individuos, organizaciones o sistemas. Esta sección cubre estrategias comprehensivas para proteger diferentes tipos de información sensible.
 
-### 9.1 Clasificación de Información Sensible
+### 8.1 Clasificación de Información Sensible
 
 #### Secretos Técnicos
 
@@ -772,7 +742,7 @@ La gestión de secretos va más allá de simples claves API. Incluye la protecci
 - **Datos de empleados**: Salarios, evaluaciones de desempeño, información personal
 - **Estrategias de mercado**: Planes de producto, estrategias de pricing
 
-### 9.2 Políticas de Clasificación y Manejo
+### 8.2 Políticas de Clasificación y Manejo
 
 #### Sistema de Clasificación por Niveles
 
@@ -798,7 +768,36 @@ RESTRINGIDO
 - Ejemplos: Secretos comerciales, datos de seguridad nacional
 ```
 
-### 9.5 Mejores Prácticas Operacionales
+### 8.3 Estrategias de Protección de Secretos
+
+#### Vault y Sistemas de Gestión de Secretos
+
+**Principios fundamentales**:
+
+- Centralización de secretos
+- Cifrado en reposo y en tránsito
+- Control de acceso granular
+- Auditoría completa de accesos
+- Rotación automática
+
+### 8.4 Detección y Prevención de Exposición
+
+#### Escaneo de Repositorios
+
+**Herramientas recomendadas**:
+
+- TruffleHog: Detección de secretos en Git
+- GitLeaks: Análisis de historial de commits
+- detect-secrets: Prevención en pre-commit hooks
+
+#### Monitoreo Continuo
+
+- Escaneo automatizado en CI/CD
+- Alertas en tiempo real
+- Revocación automática de secretos expuestos
+- Notificaciones al equipo de seguridad
+
+### 8.5 Mejores Prácticas Operacionales
 
 - **Rotación Automática de Secretos**
 
@@ -806,11 +805,11 @@ RESTRINGIDO
 
 ---
 
-## 10. Compliance y Estándares
+## 9. Compliance y Estándares
 
 Los frameworks de compliance y estándares de seguridad proporcionan estructuras formales para implementar, mantener y auditar programas de ciberseguridad. Cada framework tiene objetivos específicos y contextos de aplicación particulares.
 
-### 10.1 OWASP (Open Web Application Security Project)
+### 9.1 OWASP (Open Web Application Security Project)
 
 #### OWASP Top 10 (2021) - Análisis Detallado
 
@@ -903,7 +902,7 @@ El OWASP Top 10 representa los riesgos de seguridad más críticos para aplicaci
 
 **Definición**: Falla que permite a un atacante inducir al servidor a realizar requests a ubicaciones no previstas.
 
-### 10.2 Frameworks de Compliance Internacional
+### 9.2 Frameworks de Compliance Internacional
 
 #### ISO/IEC 27001 - Information Security Management Systems
 
@@ -971,7 +970,7 @@ A.18 Cumplimiento
 5. **Antivirus**: Usar y actualizar software antivirus
 6. **Sistemas seguros**: Desarrollar y mantener sistemas seguros
 
-### 10.3 Marcos Regulatorios por Industria
+### 9.3 Marcos Regulatorios por Industria
 
 #### GDPR (General Data Protection Regulation) - Europa
 
@@ -1000,7 +999,7 @@ A.18 Cumplimiento
 - **Section 404**: Evaluación de controles internos
 - **Section 409**: Divulgación en tiempo real
 
-### 10.4 Beneficios y Consideraciones de Implementación
+### 9.4 Beneficios y Consideraciones de Implementación
 
 #### Beneficios empresariales
 
@@ -1012,9 +1011,9 @@ A.18 Cumplimiento
 
 ---
 
-## 11. Fuentes y Recursos Útiles
+## 10. Fuentes y Recursos Útiles
 
-### 11.1 Fuentes Oficiales de Vulnerabilidades
+### 10.1 Fuentes Oficiales de Vulnerabilidades
 
 #### Organizaciones de Referencia
 
@@ -1045,7 +1044,7 @@ A.18 Cumplimiento
   - Exploit Database: [exploit-db.com](https://www.exploit-db.com/)
   - Packet Storm: [packetstormsecurity.com](https://packetstormsecurity.com/)
 
-### 11.2 Organizaciones y Frameworks de Seguridad
+### 10.2 Organizaciones y Frameworks de Seguridad
 
 #### OWASP (Open Web Application Security Project)
 
@@ -1073,7 +1072,7 @@ A.18 Cumplimiento
 - **GDPR**: [gdpr.eu](https://gdpr.eu/)
 - **HIPAA**: [hhs.gov/hipaa](https://www.hhs.gov/hipaa/)
 
-### 11.3 Herramientas de Seguridad
+### 10.3 Herramientas de Seguridad
 
 #### Análisis de Vulnerabilidades (SCA)
 
@@ -1183,7 +1182,7 @@ A.18 Cumplimiento
 - **Detect-secrets**: [github.com/Yelp/detect-secrets](https://github.com/Yelp/detect-secrets)
 - **GitGuardian**: [gitguardian.com](https://www.gitguardian.com/)
 
-### 11.4 Recursos Educativos y de Investigación
+### 10.4 Recursos Educativos y de Investigación
 
 #### Sitios de Noticias y Investigación
 
@@ -1207,7 +1206,7 @@ A.18 Cumplimiento
 - **TryHackMe**: [tryhackme.com](https://tryhackme.com/)
 - **PortSwigger Academy**: [portswigger.net/web-security](https://portswigger.net/web-security)
 
-### 11.5 APIs y Feeds Automatizados
+### 10.5 APIs y Feeds Automatizados
 
 #### APIs de Vulnerabilidades
 
@@ -1222,7 +1221,7 @@ A.18 Cumplimiento
 - **CVE RSS Feeds**: [cve.mitre.org/data/refs/refmap/source-RSS.html](https://cve.mitre.org/data/refs/refmap/source-RSS.html)
 - **NVD Data Feeds**: [nvd.nist.gov/vuln/data-feeds](https://nvd.nist.gov/vuln/data-feeds)
 
-### 11.6 Comunidades y Conferencias
+### 10.6 Comunidades y Conferencias
 
 #### Comunidades Online
 
