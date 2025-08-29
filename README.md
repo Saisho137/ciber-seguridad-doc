@@ -145,16 +145,7 @@ Una vulnerabilidad es una debilidad en un sistema que puede ser explotada por un
 
 #### Vulnerabilidades de Aplicación Web (OWASP Top 10)
 
-1. **Broken Access Control**
-2. **Cryptographic Failures**
-3. **Injection**
-4. **Insecure Design**
-5. **Security Misconfiguration**
-6. **Vulnerable and Outdated Components**
-7. **Identification and Authentication Failures**
-8. **Software and Data Integrity Failures**
-9. **Security Logging and Monitoring Failures**
-10. **Server-Side Request Forgery (SSRF)**
+Resumen de alto nivel. Para el detalle actualizado y medidas de prevención, ver la sección [9.1 OWASP Top 10](#91-owasp-open-web-application-security-project).
 
 #### Vulnerabilidades de Infraestructura
 
@@ -316,7 +307,7 @@ CVSS v4.0 agrupa métricas en: **Base, Threat, Environmental, Supplemental**. En
 
 **Temporal/Threat / Environmental** permiten ajustar la puntuación según exploits disponibles y el contexto de tu entorno.
 
-> Nota: CVSS cuantifica características técnicas; **priorizar parches requiere CVSS + probabilidad (EPSS) + exposición y contexto de negocio**.
+> Nota: CVSS cuantifica características técnicas; **prioritar parches requiere CVSS + probabilidad (EPSS) + exposición y contexto de negocio**.
 
 **Clasificación de Severidad CVSS**:
 
@@ -387,7 +378,7 @@ El dependency pinning es la práctica de especificar versiones exactas de depend
 
 #### Caret (^) - Compatible Release
 
-**Comportamiento**: caret (^) for minor updates and patches
+**Comportamiento**: caret (^) para actualizaciones MINOR y PATCH
 
 ```json
 {
@@ -410,7 +401,7 @@ El dependency pinning es la práctica de especificar versiones exactas de depend
 
 #### Tilde (~) - Reasonably Close
 
-**Comportamiento**: tilde (~) for patches only
+**Comportamiento**: tilde (~) solo para actualizaciones PATCH
 
 ```json
 {
@@ -443,7 +434,7 @@ El dependency pinning es la práctica de especificar versiones exactas de depend
 
 **Permite**: Solo la versión exacta especificada
 
-#### Otros Símbolos4
+#### Otros Símbolos
 
 ##### Greater Than (>)
 
@@ -492,7 +483,7 @@ El dependency pinning es la práctica de especificar versiones exactas de depend
 **package-lock.json** (npm) / **yarn.lock** (Yarn):
 
 - Garantizan instalaciones determinísticas
-- Congelan toda la árbol de dependencias
+- Congelan todo el árbol de dependencias
 - Críticos para reproducibilidad
 
 #### 6.4.2 Dependency Pinning Strategies
@@ -768,40 +759,31 @@ RESTRINGIDO
 - Ejemplos: Secretos comerciales, datos de seguridad nacional
 ```
 
-### 8.3 Estrategias de Protección de Secretos
+### 8.3 Ciclo de Vida de la Gestión de Secretos
 
-#### Vault y Sistemas de Gestión de Secretos
+#### 8.3.1 Almacenamiento y Protección Centralizada
 
 **Principios fundamentales**:
 
-- Centralización de secretos
-- Cifrado en reposo y en tránsito
-- Control de acceso granular
-- Auditoría completa de accesos
-- Rotación automática
+- **Centralización**: Utilizar un sistema centralizado como un "Vault" para almacenar todos los secretos.
+- **Cifrado**: Asegurar que los secretos estén cifrados tanto en tránsito (TLS) como en reposo (AES-256 GCM).
+- **Control de Acceso Granular**: Implementar políticas que definan qué usuario o servicio puede acceder a qué secreto.
+- **Auditoría Completa**: Mantener un registro inmutable de cada acceso, modificación y revocación.
 
-### 8.4 Detección y Prevención de Exposición
+#### 8.3.2 Detección y Prevención de Fugas (Leakage)
 
-#### Escaneo de Repositorios
+**Estrategia Proactiva**:
 
-**Herramientas recomendadas**:
+- **Escaneo en Pre-commit**: Integrar herramientas en los hooks de Git para evitar que los secretos lleguen al repositorio.
+- **Escaneo en CI/CD**: Añadir un paso en el pipeline que escanee el código en cada push o pull request.
+- **Monitoreo Continuo de Repositorios**: Escanear regularmente todo el historial de los repositorios en busca de secretos que se hayan filtrado en el pasado.
 
-- TruffleHog: Detección de secretos en Git
-- GitLeaks: Análisis de historial de commits
-- detect-secrets: Prevención en pre-commit hooks
+#### 8.3.3 Rotación y Revocación
 
-#### Monitoreo Continuo
+**Políticas de Rotación**:
 
-- Escaneo automatizado en CI/CD
-- Alertas en tiempo real
-- Revocación automática de secretos expuestos
-- Notificaciones al equipo de seguridad
-
-### 8.5 Mejores Prácticas Operacionales
-
-- **Rotación Automática de Secretos**
-
-- **Auditoría y Logging**
+- **Rotación Automática**: Configurar sistemas para que roten las credenciales (ej. contraseñas de bases de datos) automáticamente cada 30, 60 o 90 días.
+- **Revocación por Evento**: Implementar webhooks o funciones automatizadas que revoquen inmediatamente un secreto si se detecta una fuga.
 
 ---
 
@@ -811,96 +793,59 @@ Los frameworks de compliance y estándares de seguridad proporcionan estructuras
 
 ### 9.1 OWASP (Open Web Application Security Project)
 
-#### OWASP Top 10 (2021) - Análisis Detallado
+#### OWASP Top 10 (2021) - Resumen de Vulnerabilidades Críticas
 
-El OWASP Top 10 representa los riesgos de seguridad más críticos para aplicaciones web, basado en datos de más de 500,000 aplicaciones analizadas por organizaciones especializadas en seguridad.
+El OWASP Top 10 representa los riesgos más críticos para aplicaciones web, basado en análisis de más de 500,000 aplicaciones.
 
 ##### A01:2021 – Broken Access Control
 
-**Definición**: Fallas en la implementación de controles de acceso que permiten a usuarios actuar fuera de sus permisos previstos.
-
-**Características estadísticas**:
-
-- **Incidencia**: 3.81% de aplicaciones afectadas
-- **34 CWEs mapeadas** con más de 318k ocurrencias
-- **Ejemplos de CWE**: CWE-200 (Exposición de información sensible), CWE-352 (CSRF)
-
-**Medidas de prevención**:
-
-- Implementar principio de "deny by default"
-- Validar permisos en cada request
-- Usar tokens JWT con scopes específicos
-- Implementar controles de acceso a nivel de dominio
+**Problema**: Fallas que permiten actuar fuera de permisos previstos  
+**Prevención**: Deny by default, validar permisos por request, JWT con scopes, controles a nivel de dominio
 
 ##### A02:2021 – Cryptographic Failures
 
-**Definición**: Fallas relacionadas con criptografía que frecuentemente llevan a exposición de datos sensibles.
-
-**Problemas frecuentes**:
-
-- Transmisión de datos en texto plano
-- Uso de algoritmos criptográficos débiles u obsoletos
-- Generación deficiente o gestión inadecuada de claves
-- Falta de validación de certificados
+**Problema**: Fallas criptográficas que exponen datos sensibles  
+**Prevención**: Cifrado fuerte, TLS para transmisión, gestión segura de claves, validar certificados
 
 ##### A03:2021 – Injection
 
-**Definición**: Fallas que ocurren cuando datos no confiables son enviados a un intérprete como parte de un comando o consulta.
-
-**Tipos principales**:
-
-- **SQL Injection**: Manipulación de consultas SQL
-- **NoSQL Injection**: Ataques a bases de datos NoSQL
-- **OS Command Injection**: Ejecución de comandos del sistema
-- **LDAP Injection**: Manipulación de consultas LDAP
+**Problema**: Datos no confiables ejecutados como comandos o consultas  
+**Prevención**: Prepared statements, validación de entrada, escapar datos, principio de menor privilegio
 
 ##### A04:2021 – Insecure Design
 
-**Definición**: Categoría amplia que representa diferentes debilidades expresadas como "diseño inseguro".
-
-**Principios de diseño seguro**:
-
-- Modelado de amenazas durante fases de diseño
-- Uso de patrones de diseño seguros
-- Arquitectura de referencia con componentes verificados
+**Problema**: Debilidades de diseño arquitectónico fundamentales  
+**Prevención**: Modelado de amenazas, patrones seguros, arquitectura con responsabilidades claras
 
 ##### A05:2021 – Security Misconfiguration
 
-**Definición**: Configuraciones de seguridad inseguras o incompletas en cualquier nivel del stack de aplicación.
+**Problema**: Configuraciones inseguras en cualquier nivel del stack  
+**Prevención**: Hardening, configuración segura por defecto, automatización, principios mínimos
 
 ##### A06:2021 – Vulnerable and Outdated Components
 
-**Definición**: Uso de componentes con vulnerabilidades conocidas o desactualizados.
-
-**Gestión de dependencias**:
-
-```json
-// package.json con audit automático
-{
-  "scripts": {
-    "audit": "npm audit --audit-level moderate",
-    "audit-fix": "npm audit fix",
-    "dependencies-check": "npm outdated",
-    "security-scan": "npm audit && retire --path ."
-  },
-}
-```
+**Problema**: Uso de componentes con vulnerabilidades conocidas  
+**Prevención**: Ver [sección 6 Gestión de Dependencias](#6-gestión-de-dependencias) para SCA, pinning y auditoría
 
 ##### A07:2021 – Identification and Authentication Failures
 
-**Definición**: Fallas en confirmar identidad, autenticación y gestión de sesiones.
+**Problema**: Fallas en confirmación de identidad y gestión de sesiones  
+**Prevención**: MFA, contraseñas fuertes, gestión segura de sesiones, rate limiting
 
 ##### A08:2021 – Software and Data Integrity Failures
 
-**Definición**: Fallas relacionadas con código e infraestructura que no protege contra violaciones de integridad.
+**Problema**: Código e infraestructura sin protección contra violaciones de integridad  
+**Prevención**: Firmas digitales, CI/CD seguro, dependencias de fuentes confiables
 
 ##### A09:2021 – Security Logging and Monitoring Failures
 
-**Definición**: Falta de logging, detección, monitoreo y respuesta activa a brechas de seguridad.
+**Problema**: Falta de logging, detección y respuesta a brechas  
+**Prevención**: Logging de eventos críticos, monitoreo en tiempo real, alertas automatizadas
 
 ##### A10:2021 – Server-Side Request Forgery (SSRF)
 
-**Definición**: Falla que permite a un atacante inducir al servidor a realizar requests a ubicaciones no previstas.
+**Problema**: Servidor realiza requests a ubicaciones no previstas  
+**Prevención**: Validar URLs, lista blanca de destinos, segmentación de red
 
 ### 9.2 Frameworks de Compliance Internacional
 
@@ -1064,6 +1009,7 @@ A.18 Cumplimiento
   - Cybersecurity Framework: [nist.gov/cyberframework](https://www.nist.gov/cyberframework)
   - SP 800-53 (Security Controls): [csrc.nist.gov/publications/detail/sp/800-53/rev-5/final](https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final)
   - SP 800-61 (Incident Response): [csrc.nist.gov/publications/detail/sp/800-61/rev-2/final](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
+  - SP 800-207 (Zero Trust Architecture): [csrc.nist.gov/publications/detail/sp/800-207/final](https://csrc.nist.gov/publications/detail/sp/800-207/final)
 
 #### Frameworks de Compliance
 
@@ -1096,77 +1042,16 @@ A.18 Cumplimiento
 - **Burp Suite**: [portswigger.net/burp](https://portswigger.net/burp) - Plataforma profesional de testing de aplicaciones web
 - **Nuclei**: [github.com/projectdiscovery/nuclei](https://github.com/projectdiscovery/nuclei) - Escáner de vulnerabilidades basado en templates
 
-#### Servicios Integrales de Seguridad
+#### Plataformas Empresariales (resumen)
 
-- **Fluid Attacks**: [fluidattacks.com](https://fluidattacks.com/) - Plataforma DevSecOps que combina SAST, DAST, SCA, pentesting manual y consultoría especializada
-  - **Continuous Hacking**: Evaluación continua de seguridad en todas las fases del desarrollo
-  - **Attack Simulation**: Pruebas de penetración manuales y automatizadas por expertos
-  - **DevSecOps Integration**: Integración nativa con CI/CD y herramientas de desarrollo
-  - **Secure Code Review**: Revisión manual de código por especialistas en seguridad
-  - **Compliance Support**: Asistencia para cumplimiento de estándares como PCI DSS, SOC 2, ISO 27001
-  - **ASPM Platform**: Gestión de postura de seguridad de aplicaciones con priorización basada en riesgo
-
-#### Plataformas Empresariales Especializadas
-
-- **Checkmarx**: [checkmarx.com](https://checkmarx.com/) - Plataforma empresarial líder en SAST con soporte para 75+ lenguajes
-  - **Checkmarx One**: Plataforma unificada cloud-native de seguridad de aplicaciones
-  - **Checkmarx SAST**: Análisis estático de código fuente con detección de vulnerabilidades en tiempo real
-  - **Checkmarx SCA**: Análisis de composición de software para gestión de dependencias
-  - **Checkmarx DAST**: Análisis dinámico de aplicaciones web y APIs
-  - **Checkmarx KICS**: Escaneado de Infrastructure as Code (IaC) para configuraciones seguras
-  - **API Security**: Protección especializada para APIs y microservicios
-  - **Container Security**: Seguridad de contenedores y registries
-
-- **Veracode**: [veracode.com](https://www.veracode.com/) - Plataforma de gestión de riesgos de aplicaciones con IA
-  - **Application Risk Management**: Plataforma integral para identificar y eliminar riesgos de seguridad
-  - **AI-Powered Remediation**: Correcciones automáticas con tecnología de IA
-  - **360T+ líneas de código escaneadas** con más de 121M+ fallas de software corregidas
-  - **<0.99% tasa de falsos positivos** con precisión Six Sigma
-  - **Cobertura completa**: SAST, DAST, SCA, IAST con soporte para cientos de lenguajes
-
-- **Snyk**: [snyk.io](https://snyk.io/) - Plataforma de seguridad para desarrolladores con IA nativa
-  - **DeepCode AI Engine**: Modelos de IA entrenados específicamente con datos de seguridad
-  - **Snyk Code**: SAST que no retrasa el desarrollo con correcciones agénticas
-  - **Snyk Open Source**: SCA con la base de datos de vulnerabilidades más completa del mundo
-  - **Snyk Container**: Seguridad de contenedores y Kubernetes en todo el SDLC
-  - **Snyk Infrastructure as Code**: Configuraciones de nube seguras con sugerencias de remediación
-  - **Snyk AppRisk**: ASPM con visibilidad impulsada por IA y priorización basada en riesgo
-
-#### Plataformas de Gestión de Vulnerabilidades y Riesgo
-
-- **Rapid7**: [rapid7.com](https://www.rapid7.com/) - Plataforma unificada de ciberseguridad endpoint-to-cloud
-  - **Command Platform**: Visibilidad, predicción y respuesta impulsadas por IA
-  - **Exposure Management**: Evaluación continua de superficie de ataque con contexto crítico
-  - **Attack Surface Management**: Vista unificada de activos en todo el patrimonio digital
-  - **Cloud Security (CNAPP)**: Monitoreo y detección de riesgos en entornos multi-cloud
-  - **Vulnerability Management**: Comprensión de riesgos y priorización de remediación
-  - **MDR Services**: Servicios gestionados 24/7 con respuesta ilimitada a incidentes
-
-- **Qualys**: [qualys.com](https://www.qualys.com/) - Enterprise TruRisk Platform para gestión autónoma de riesgos cibernéticos
-  - **TotalAppSec**: Plataforma completa de seguridad de aplicaciones
-  - **VMDR**: Gestión, detección y respuesta de vulnerabilidades
-  - **Container Security**: Protección de contenedores y workloads en la nube
-  - **CSAM**: Gestión de superficie de ataque de ciberseguridad
-  - **Agentic AI**: IA agéntica para priorización y respuesta autónoma a señales de riesgo
-  - **99.99966% precisión Six Sigma** con más de 6B+ auditorías IP por año
-
-#### Soluciones de Composición de Software
-
-- **Sonatype**: [sonatype.com](https://www.sonatype.com/) - Líder en gestión de cadena de suministro de software
-  - **Nexus Repository**: Gestión centralizada de componentes y binarios
-  - **Sonatype Lifecycle**: Monitoreo de salud y cumplimiento de políticas de componentes open source
-  - **Repository Firewall**: Protección con IA contra malware que predice amenazas días antes de avisos públicos
-  - **SBOM Manager**: Gestión de Software Bill of Materials a escala empresarial
-  - **50+ integraciones** con IDEs, repositorios, pipelines CI y sistemas de tickets
-
-#### Herramientas DAST Especializadas
-
-- **Invicti** (antes Netsparker): [invicti.com](https://www.invicti.com/) - Plataforma DAST-first con precisión proof-based
-  - **Industry-leading DAST**: Motor DAST con 99.98% de precisión y escaneo proof-based
-  - **AI-Enhanced Scanning**: Innovaciones de IA que cierran la brecha entre escaneo automatizado y pentesting manual
-  - **ASPM Integration**: Capacidades de Application Security Posture Management integradas
-  - **Runtime Security**: Enfoque en seguridad durante tiempo de ejecución donde operan los atacantes
-  - **50+ integraciones** con herramientas de desarrollo y flujos de trabajo
+- **Fluid Attacks**: [fluidattacks.com](https://fluidattacks.com/) - DevSecOps con continuous hacking, pentesting manual y compliance
+- **Checkmarx**: [checkmarx.com](https://checkmarx.com/) - Suite SAST/SCA/DAST/IaC con soporte para 75+ lenguajes
+- **Veracode**: [veracode.com](https://www.veracode.com/) - Gestión de riesgos con IA y cobertura SAST/DAST/SCA/IAST
+- **Snyk**: [snyk.io](https://snyk.io/) - Plataforma developer-first con IA para código, dependencias y contenedores
+- **Rapid7**: [rapid7.com](https://www.rapid7.com/) - Vulnerability management y attack surface management
+- **Qualys**: [qualys.com](https://www.qualys.com/) - Enterprise risk platform con cloud security (CSPM/CNAPP)
+- **Sonatype**: [sonatype.com](https://www.sonatype.com/) - Supply chain security con Nexus Repository y SBOM
+- **Invicti**: [invicti.com](https://www.invicti.com/) - DAST especializado con proof-based scanning
 
 #### Gestión de Secretos
 
@@ -1181,6 +1066,13 @@ A.18 Cumplimiento
 - **GitLeaks**: [github.com/gitleaks/gitleaks](https://github.com/gitleaks/gitleaks)
 - **Detect-secrets**: [github.com/Yelp/detect-secrets](https://github.com/Yelp/detect-secrets)
 - **GitGuardian**: [gitguardian.com](https://www.gitguardian.com/)
+
+#### Integridad de la cadena de suministro y SBOM
+
+- **Syft** (SBOM): [github.com/anchore/syft](https://github.com/anchore/syft)
+- **CycloneDX** (SBOM spec): [cyclonedx.org](https://cyclonedx.org/)
+- **Cosign** (firmas de contenedores): [github.com/sigstore/cosign](https://github.com/sigstore/cosign)
+- **SLSA** (levels de supply chain): [slsa.dev](https://slsa.dev/)
 
 ### 10.4 Recursos Educativos y de Investigación
 
