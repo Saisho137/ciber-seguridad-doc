@@ -14,6 +14,7 @@ Este documento sirve como una guía centralizada de la mayoría de temas relacio
 8. [Herramientas y Automatización](#8-herramientas-y-automatización)
 9. [Gestión de Secretos e Información Sensible](#9-gestión-de-secretos-e-información-sensible)
 10. [Compliance y Estándares](#10-compliance-y-estándares)
+11. [Fuentes y Recursos Útiles](#11-fuentes-y-recursos-útiles)
 
 ---
 
@@ -182,7 +183,15 @@ graph TD
 
 ### 5.1 CVE (Common Vulnerabilities and Exposures)
 
-**Definición**: CVE stands for Common Vulnerabilities and Exposures. CVE is a glossary that classifies vulnerabilities.
+**Definición**: CVE (Common Vulnerabilities and Exposures) es un glosario que clasifica vulnerabilidades de manera estandarizada para facilitar el intercambio de información sobre seguridad.
+
+**Organización responsable**: El programa CVE es mantenido por el MITRE Corporation, financiado por la Cybersecurity and Infrastructure Security Agency (CISA) del Departamento de Seguridad Nacional de EE.UU.
+
+**Fuentes oficiales**:
+
+- **Sitio principal**: [cve.mitre.org](https://cve.mitre.org/)
+- **Base de datos NVD**: [nvd.nist.gov](https://nvd.nist.gov/) (National Vulnerability Database)
+- **Búsqueda CVE**: [cve.mitre.org/cve/search_cve_list.html](https://cve.mitre.org/cve/search_cve_list.html)
 
 **Estructura de un CVE ID**:
 
@@ -204,7 +213,15 @@ CVE-YYYY-NNNNN
 
 ### 5.2 CWE (Common Weakness Enumeration)
 
-**Definición**: CWE is a list of common software weaknesses. CWE provides an in-depth look at the underlying causes of security vulnerabilities.
+**Definición**: CWE (Common Weakness Enumeration) es una lista comunitaria de tipos comunes de debilidades de software que proporciona una visión profunda de las causas subyacentes de las vulnerabilidades de seguridad.
+
+**Organización responsable**: Mantenido por MITRE Corporation con apoyo de la comunidad de ciberseguridad.
+
+**Fuentes oficiales**:
+
+- **Sitio principal**: [cwe.mitre.org](https://cwe.mitre.org/)
+- **Lista completa**: [cwe.mitre.org/data/index.html](https://cwe.mitre.org/data/index.html)
+- **Top 25 CWE**: [cwe.mitre.org/top25](https://cwe.mitre.org/top25/)
 
 **Diferencia con CVE**: Mientras CVE identifica vulnerabilidades específicas, CWE categoriza los tipos de debilidades que pueden llevar a vulnerabilidades.
 
@@ -217,13 +234,23 @@ CVE-YYYY-NNNNN
 
 ### 5.3 CVSS (Common Vulnerability Scoring System)
 
-**Definición**: CVSS is a widely used framework for evaluating the severity of information security vulnerabilities.
+**Definición**: CVSS (Common Vulnerability Scoring System) es un marco ampliamente utilizado para evaluar la severidad de las vulnerabilidades de seguridad de la información.
+
+**Organización responsable**: Desarrollado y mantenido por FIRST (Forum of Incident Response and Security Teams).
+
+**Fuentes oficiales**:
+
+- **Sitio principal**: [first.org/cvss](https://www.first.org/cvss/)
+- **Calculadora CVSS v3.1**: [nvd.nist.gov/vuln-metrics/cvss/v3-calculator](https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator)
+- **Calculadora CVSS v4.0**: [first.org/cvss/calculator/4.0](https://www.first.org/cvss/calculator/4.0)
+- **Especificación v3.1**: [first.org/cvss/v3.1/specification-document](https://www.first.org/cvss/v3.1/specification-document)
+- **Especificación v4.0**: [first.org/cvss/v4.0/specification-document](https://www.first.org/cvss/v4.0/specification-document)
 
 #### CVSS v3.1: métricas y vectores
 
 **Estructura del Score CVSS v3.1**:
 
-- **Rango**: CVSS scores range from 0 to 10, with 10 being the most severe
+- **Rango**: Las puntuaciones CVSS van de 0 a 10, siendo 10 la más severa
 - **Versión actual**: CVSS v3.1 (2019)
 
 **Grupos de métricas CVSS v3.1**:
@@ -982,3 +1009,157 @@ A.18 Cumplimiento
 3. **Ventaja competitiva**: Diferenciación en el mercado
 4. **Cumplimiento legal**: Evitar multas y sanciones
 5. **Eficiencia operacional**: Procesos estructurados y documentados
+
+---
+
+## 11. Fuentes y Recursos Útiles
+
+### 11.1 Fuentes Oficiales de Vulnerabilidades
+
+#### Organizaciones de Referencia
+
+- **MITRE Corporation**: [mitre.org](https://www.mitre.org/)
+  - CVE Program: [cve.mitre.org](https://cve.mitre.org/)
+  - CWE Database: [cwe.mitre.org](https://cwe.mitre.org/)
+  - CAPEC: [capec.mitre.org](https://capec.mitre.org/) (Common Attack Pattern Enumeration and Classification)
+
+- **NIST (National Institute of Standards and Technology)**: [nist.gov](https://www.nist.gov/)
+  - National Vulnerability Database: [nvd.nist.gov](https://nvd.nist.gov/)
+  - Cybersecurity Framework: [nist.gov/cybersecurity](https://www.nist.gov/cybersecurity)
+  - Special Publications: [csrc.nist.gov](https://csrc.nist.gov/)
+
+- **FIRST (Forum of Incident Response and Security Teams)**: [first.org](https://www.first.org/)
+  - CVSS Specifications: [first.org/cvss](https://www.first.org/cvss/)
+  - EPSS: [first.org/epss](https://www.first.org/epss/) (Exploit Prediction Scoring System)
+
+#### Bases de Datos de Vulnerabilidades Recomendadas
+
+- **Oficiales**:
+  - NVD (NIST): [nvd.nist.gov](https://nvd.nist.gov/)
+  - CVE Details: [cvedetails.com](https://www.cvedetails.com/)
+  - MITRE CVE: [cve.mitre.org](https://cve.mitre.org/)
+
+- **Comerciales y Comunitarias**:
+  - Vulners: [vulners.com](https://vulners.com/)
+  - VulnDB: [vulndb.cyberriskanalytics.com](https://vulndb.cyberriskanalytics.com/)
+  - Exploit Database: [exploit-db.com](https://www.exploit-db.com/)
+  - Packet Storm: [packetstormsecurity.com](https://packetstormsecurity.com/)
+
+### 11.2 Organizaciones y Frameworks de Seguridad
+
+#### OWASP (Open Web Application Security Project)
+
+- **Sitio principal**: [owasp.org](https://owasp.org/)
+- **OWASP Top 10**: [owasp.org/Top10](https://owasp.org/Top10/)
+- **Testing Guide**: [owasp.org/www-project-web-security-testing-guide](https://owasp.org/www-project-web-security-testing-guide/)
+- **Cheat Sheet Series**: [cheatsheetseries.owasp.org](https://cheatsheetseries.owasp.org/)
+- **ASVS**: [owasp.org/www-project-application-security-verification-standard](https://owasp.org/www-project-application-security-verification-standard/)
+
+#### Estándares Internacionales
+
+- **ISO**: [iso.org](https://www.iso.org/)
+  - ISO/IEC 27001: [iso.org/isoiec-27001-information-security.html](https://www.iso.org/isoiec-27001-information-security.html)
+  - ISO/IEC 27002: [iso.org/standard/75652.html](https://www.iso.org/standard/75652.html)
+
+- **NIST Frameworks**:
+  - Cybersecurity Framework: [nist.gov/cyberframework](https://www.nist.gov/cyberframework)
+  - SP 800-53 (Security Controls): [csrc.nist.gov/publications/detail/sp/800-53/rev-5/final](https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final)
+  - SP 800-61 (Incident Response): [csrc.nist.gov/publications/detail/sp/800-61/rev-2/final](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
+
+#### Frameworks de Compliance
+
+- **SOC 2**: [aicpa.org](https://www.aicpa.org/) (AICPA)
+- **PCI DSS**: [pcisecuritystandards.org](https://www.pcisecuritystandards.org/)
+- **GDPR**: [gdpr.eu](https://gdpr.eu/)
+- **HIPAA**: [hhs.gov/hipaa](https://www.hhs.gov/hipaa/)
+
+### 11.3 Herramientas de Seguridad
+
+#### Análisis de Vulnerabilidades (SCA)
+
+- **Dependabot**: [github.com/dependabot](https://github.com/dependabot) (GitHub)
+- **Snyk**: [snyk.io](https://snyk.io/)
+- **OWASP Dependency Check**: [owasp.org/www-project-dependency-check](https://owasp.org/www-project-dependency-check/)
+- **Trivy**: [github.com/aquasecurity/trivy](https://github.com/aquasecurity/trivy)
+- **Grype**: [github.com/anchore/grype](https://github.com/anchore/grype)
+
+#### Análisis Estático (SAST)
+
+- **SonarQube**: [sonarqube.org](https://www.sonarqube.org/)
+- **Semgrep**: [semgrep.dev](https://semgrep.dev/)
+- **CodeQL**: [github.com/github/codeql](https://github.com/github/codeql)
+- **Bandit** (Python): [github.com/PyCQA/bandit](https://github.com/PyCQA/bandit)
+- **ESLint Security**: [github.com/eslint-community/eslint-plugin-security](https://github.com/eslint-community/eslint-plugin-security)
+
+#### Análisis Dinámico (DAST)
+
+- **OWASP ZAP**: [zaproxy.org](https://www.zaproxy.org/)
+- **Burp Suite**: [portswigger.net/burp](https://portswigger.net/burp)
+- **Nuclei**: [github.com/projectdiscovery/nuclei](https://github.com/projectdiscovery/nuclei)
+
+#### Gestión de Secretos
+
+- **HashiCorp Vault**: [vaultproject.io](https://www.vaultproject.io/)
+- **AWS Secrets Manager**: [aws.amazon.com/secrets-manager](https://aws.amazon.com/secrets-manager/)
+- **Azure Key Vault**: [azure.microsoft.com/services/key-vault](https://azure.microsoft.com/services/key-vault/)
+- **Google Secret Manager**: [cloud.google.com/secret-manager](https://cloud.google.com/secret-manager)
+
+#### Detección de Secretos
+
+- **TruffleHog**: [github.com/trufflesecurity/trufflehog](https://github.com/trufflesecurity/trufflehog)
+- **GitLeaks**: [github.com/gitleaks/gitleaks](https://github.com/gitleaks/gitleaks)
+- **Detect-secrets**: [github.com/Yelp/detect-secrets](https://github.com/Yelp/detect-secrets)
+- **GitGuardian**: [gitguardian.com](https://www.gitguardian.com/)
+
+### 11.4 Recursos Educativos y de Investigación
+
+#### Sitios de Noticias y Investigación
+
+- **Krebs on Security**: [krebsonsecurity.com](https://krebsonsecurity.com/)
+- **Schneier on Security**: [schneier.com](https://www.schneier.com/)
+- **The Hacker News**: [thehackernews.com](https://thehackernews.com/)
+- **Dark Reading**: [darkreading.com](https://www.darkreading.com/)
+- **SecurityWeek**: [securityweek.com](https://www.securityweek.com/)
+
+#### Centros de Investigación
+
+- **SANS Institute**: [sans.org](https://www.sans.org/)
+- **Ponemon Institute**: [ponemon.org](https://www.ponemon.org/)
+- **Verizon DBIR**: [verizon.com/business/resources/reports/dbir](https://www.verizon.com/business/resources/reports/dbir/)
+
+#### Plataformas de Aprendizaje
+
+- **OWASP WebGoat**: [webgoat.github.io/WebGoat](https://webgoat.github.io/WebGoat/)
+- **DVWA**: [dvwa.co.uk](https://dvwa.co.uk/) (Damn Vulnerable Web Application)
+- **HackTheBox**: [hackthebox.com](https://www.hackthebox.com/)
+- **TryHackMe**: [tryhackme.com](https://tryhackme.com/)
+- **PortSwigger Academy**: [portswigger.net/web-security](https://portswigger.net/web-security)
+
+### 11.5 APIs y Feeds Automatizados
+
+#### APIs de Vulnerabilidades
+
+- **NVD REST API**: [nvd.nist.gov/developers](https://nvd.nist.gov/developers)
+- **CVE API**: [cveawg.mitre.org/api](https://cveawg.mitre.org/api/)
+- **Vulners API**: [vulners.com/docs](https://vulners.com/docs/)
+- **GitHub Security Advisories API**: [docs.github.com/en/rest/security-advisories](https://docs.github.com/en/rest/security-advisories)
+
+#### Feeds y Alertas
+
+- **US-CERT Alerts**: [cisa.gov/news-events/cybersecurity-advisories](https://www.cisa.gov/news-events/cybersecurity-advisories)
+- **CVE RSS Feeds**: [cve.mitre.org/data/refs/refmap/source-RSS.html](https://cve.mitre.org/data/refs/refmap/source-RSS.html)
+- **NVD Data Feeds**: [nvd.nist.gov/vuln/data-feeds](https://nvd.nist.gov/vuln/data-feeds)
+
+### 11.6 Comunidades y Conferencias
+
+#### Comunidades Online
+
+- **Reddit r/netsec**: [reddit.com/r/netsec](https://www.reddit.com/r/netsec/)
+- **Discord/Slack Communities**: OWASP Slack, InfoSec Discord servers
+
+#### Conferencias Principales
+
+- **RSA Conference**: [rsaconference.com](https://www.rsaconference.com/)
+- **Black Hat / DEF CON**: [blackhat.com](https://www.blackhat.com/), [defcon.org](https://defcon.org/)
+- **BSides**: [bsides.org](http://www.bsides.org/) (Eventos locales)
+- **OWASP Global AppSec**: [owasp.org/events](https://owasp.org/events/)
