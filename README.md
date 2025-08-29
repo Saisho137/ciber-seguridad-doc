@@ -1085,17 +1085,89 @@ A.18 Cumplimiento
 
 #### Análisis Estático (SAST)
 
-- **SonarQube**: [sonarqube.org](https://www.sonarqube.org/)
-- **Semgrep**: [semgrep.dev](https://semgrep.dev/)
-- **CodeQL**: [github.com/github/codeql](https://github.com/github/codeql)
-- **Bandit** (Python): [github.com/PyCQA/bandit](https://github.com/PyCQA/bandit)
-- **ESLint Security**: [github.com/eslint-community/eslint-plugin-security](https://github.com/eslint-community/eslint-plugin-security)
+- **SonarQube**: [sonarqube.org](https://www.sonarqube.org/) - Plataforma de calidad y seguridad de código
+- **Semgrep**: [semgrep.dev](https://semgrep.dev/) - Análisis estático con reglas personalizables
+- **CodeQL**: [github.com/github/codeql](https://github.com/github/codeql) - Motor de análisis semántico de GitHub
+- **Bandit** (Python): [github.com/PyCQA/bandit](https://github.com/PyCQA/bandit) - Herramienta de seguridad para Python
+- **ESLint Security**: [github.com/eslint-community/eslint-plugin-security](https://github.com/eslint-community/eslint-plugin-security) - Plugin de seguridad para JavaScript
 
 #### Análisis Dinámico (DAST)
 
-- **OWASP ZAP**: [zaproxy.org](https://www.zaproxy.org/)
-- **Burp Suite**: [portswigger.net/burp](https://portswigger.net/burp)
-- **Nuclei**: [github.com/projectdiscovery/nuclei](https://github.com/projectdiscovery/nuclei)
+- **OWASP ZAP**: [zaproxy.org](https://www.zaproxy.org/) - Proxy de seguridad con escáner automatizado
+- **Burp Suite**: [portswigger.net/burp](https://portswigger.net/burp) - Plataforma profesional de testing de aplicaciones web
+- **Nuclei**: [github.com/projectdiscovery/nuclei](https://github.com/projectdiscovery/nuclei) - Escáner de vulnerabilidades basado en templates
+
+#### Servicios Integrales de Seguridad
+
+- **Fluid Attacks**: [fluidattacks.com](https://fluidattacks.com/) - Plataforma DevSecOps que combina SAST, DAST, SCA, pentesting manual y consultoría especializada
+  - **Continuous Hacking**: Evaluación continua de seguridad en todas las fases del desarrollo
+  - **Attack Simulation**: Pruebas de penetración manuales y automatizadas por expertos
+  - **DevSecOps Integration**: Integración nativa con CI/CD y herramientas de desarrollo
+  - **Secure Code Review**: Revisión manual de código por especialistas en seguridad
+  - **Compliance Support**: Asistencia para cumplimiento de estándares como PCI DSS, SOC 2, ISO 27001
+  - **ASPM Platform**: Gestión de postura de seguridad de aplicaciones con priorización basada en riesgo
+
+#### Plataformas Empresariales Especializadas
+
+- **Checkmarx**: [checkmarx.com](https://checkmarx.com/) - Plataforma empresarial líder en SAST con soporte para 75+ lenguajes
+  - **Checkmarx One**: Plataforma unificada cloud-native de seguridad de aplicaciones
+  - **Checkmarx SAST**: Análisis estático de código fuente con detección de vulnerabilidades en tiempo real
+  - **Checkmarx SCA**: Análisis de composición de software para gestión de dependencias
+  - **Checkmarx DAST**: Análisis dinámico de aplicaciones web y APIs
+  - **Checkmarx KICS**: Escaneado de Infrastructure as Code (IaC) para configuraciones seguras
+  - **API Security**: Protección especializada para APIs y microservicios
+  - **Container Security**: Seguridad de contenedores y registries
+
+- **Veracode**: [veracode.com](https://www.veracode.com/) - Plataforma de gestión de riesgos de aplicaciones con IA
+  - **Application Risk Management**: Plataforma integral para identificar y eliminar riesgos de seguridad
+  - **AI-Powered Remediation**: Correcciones automáticas con tecnología de IA
+  - **360T+ líneas de código escaneadas** con más de 121M+ fallas de software corregidas
+  - **<0.99% tasa de falsos positivos** con precisión Six Sigma
+  - **Cobertura completa**: SAST, DAST, SCA, IAST con soporte para cientos de lenguajes
+
+- **Snyk**: [snyk.io](https://snyk.io/) - Plataforma de seguridad para desarrolladores con IA nativa
+  - **DeepCode AI Engine**: Modelos de IA entrenados específicamente con datos de seguridad
+  - **Snyk Code**: SAST que no retrasa el desarrollo con correcciones agénticas
+  - **Snyk Open Source**: SCA con la base de datos de vulnerabilidades más completa del mundo
+  - **Snyk Container**: Seguridad de contenedores y Kubernetes en todo el SDLC
+  - **Snyk Infrastructure as Code**: Configuraciones de nube seguras con sugerencias de remediación
+  - **Snyk AppRisk**: ASPM con visibilidad impulsada por IA y priorización basada en riesgo
+
+#### Plataformas de Gestión de Vulnerabilidades y Riesgo
+
+- **Rapid7**: [rapid7.com](https://www.rapid7.com/) - Plataforma unificada de ciberseguridad endpoint-to-cloud
+  - **Command Platform**: Visibilidad, predicción y respuesta impulsadas por IA
+  - **Exposure Management**: Evaluación continua de superficie de ataque con contexto crítico
+  - **Attack Surface Management**: Vista unificada de activos en todo el patrimonio digital
+  - **Cloud Security (CNAPP)**: Monitoreo y detección de riesgos en entornos multi-cloud
+  - **Vulnerability Management**: Comprensión de riesgos y priorización de remediación
+  - **MDR Services**: Servicios gestionados 24/7 con respuesta ilimitada a incidentes
+
+- **Qualys**: [qualys.com](https://www.qualys.com/) - Enterprise TruRisk Platform para gestión autónoma de riesgos cibernéticos
+  - **TotalAppSec**: Plataforma completa de seguridad de aplicaciones
+  - **VMDR**: Gestión, detección y respuesta de vulnerabilidades
+  - **Container Security**: Protección de contenedores y workloads en la nube
+  - **CSAM**: Gestión de superficie de ataque de ciberseguridad
+  - **Agentic AI**: IA agéntica para priorización y respuesta autónoma a señales de riesgo
+  - **99.99966% precisión Six Sigma** con más de 6B+ auditorías IP por año
+
+#### Soluciones de Composición de Software
+
+- **Sonatype**: [sonatype.com](https://www.sonatype.com/) - Líder en gestión de cadena de suministro de software
+  - **Nexus Repository**: Gestión centralizada de componentes y binarios
+  - **Sonatype Lifecycle**: Monitoreo de salud y cumplimiento de políticas de componentes open source
+  - **Repository Firewall**: Protección con IA contra malware que predice amenazas días antes de avisos públicos
+  - **SBOM Manager**: Gestión de Software Bill of Materials a escala empresarial
+  - **50+ integraciones** con IDEs, repositorios, pipelines CI y sistemas de tickets
+
+#### Herramientas DAST Especializadas
+
+- **Invicti** (antes Netsparker): [invicti.com](https://www.invicti.com/) - Plataforma DAST-first con precisión proof-based
+  - **Industry-leading DAST**: Motor DAST con 99.98% de precisión y escaneo proof-based
+  - **AI-Enhanced Scanning**: Innovaciones de IA que cierran la brecha entre escaneo automatizado y pentesting manual
+  - **ASPM Integration**: Capacidades de Application Security Posture Management integradas
+  - **Runtime Security**: Enfoque en seguridad durante tiempo de ejecución donde operan los atacantes
+  - **50+ integraciones** con herramientas de desarrollo y flujos de trabajo
 
 #### Gestión de Secretos
 
